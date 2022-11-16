@@ -1,8 +1,8 @@
-import { ethers } from "hardhat";
+import { ethers, upgrades } from "hardhat";
 
 async function main() {
   const Dragons = await ethers.getContractFactory("DragonsV1");
-  const dragons = await Dragons.deploy();
+  const dragons = await upgrades.deployProxy(Dragons);
 
   await dragons.deployed();
 }
